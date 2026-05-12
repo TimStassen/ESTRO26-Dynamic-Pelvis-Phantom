@@ -59,12 +59,31 @@
     <div class="container">
         <div class="section">
             <h2>Main Objective</h2>
-            <p>The use of online adaptive radiotherapy (oART) is increasing to treat tumours in dynamic regions of the patient. Dynamic regions are referred to as regions where anatomy changes considerably per delivered fraction (e.g. organ filling or weight loss). 
-                Examples of these regions are pelvic cancers, due to the constant change in bladder size and shape, pushing the tumor in different positions. With this new treatment approach, new treatment systems have been developed (e.g. Varian Ethos). 
-                To simulate the different stuations in bladder size and shape, this work aims to develop a first tissue-equivalent anthropomorphic phantom including a dynamic bladder.</p>
             
-            <p>After the image, you can add more detailed notes or observations.</p>
-        </div>
+            <p>
+            Modern online adaptive radiotherapy (oART) adjusts treatment in real time to account for anatomical changes. 
+            However, verifying dose delivery remains challenging, especially when organs change rapidly, such as bladder filling.
+            </p>
+            <ul>
+                <li>Traditional phantoms lack realistic anatomy</li>
+                <li>Limited ability to simulate organ motion</li>
+            </ul>
+            <p>
+            This can lead to less reliable validation of treatment workflows.
+            </p>
+            </div>
+            
+            <div class="section">
+            <h2>Our solution</h2>
+            <p>
+            We developed a <strong>realistic 3D-printed pelvic phantom</strong> that includes:
+            </p>
+            <ul>
+                <li>Detailed anatomical structures (muscle, fat, bone)</li>
+                <li>A <strong>dynamic bladder</strong> with controlled filling and emptying</li>
+            </ul>
+            </div>
+
 
         <div class="section">
             <h2>Developing the anthrophic phantom</h2>
@@ -81,15 +100,108 @@
                 <img src="images/stripped workflow_v3 (8).png" alt="The workflow to develop tissue-equivalent thorax phantoms by Stassen et al. (2026)" />
                 </div>
 
-                The first step is to select a wide variety of "candidate" materials. From these materials, samples are printed and scanned on a Dual Energy CT in step 2 to determine their material properties: the relative electron density (RED) and effective atomic number (Z<sub>eff<sub/>).
+                The first step is to select a wide variety of "candidate" materials. From these materials, samples are printed and scanned on a Dual Energy CT in step 2 to determine their material properties: the relative electron density (RED) and effective atomic number (Z<sub>eff</sub>).
                     In step 3, different settings were tested to vary the RED value of the printed region using a specific filament. An optimal RED value is determined for each combination of printer settings and the closest match with a reference value (here the ICRU44 by woodward et al).
                     once the optimal setting for all relevant anatomical structures were obtained, they are used with the anatomical geometries for phantom preparation. The phantom is then printed and scanned on the DECT to verify the tissue properties within the phantom.
              </p>
         </div>
         <div class="section">
-             <h2>Bladder filling measurements</h2>
-            <p> ha
+             <h2>Bladder development</h2>
+            <p>
+                The phantom (187 × 287 × 70 mm³) was created using two 3D-printing materials and includes nine anatomical structures.
+                Printing parameters were optimized to match realistic CT values using in-house software (AMIGOpy).
             </p>    
+            
+        <div class="highlight">
+        <strong>Dynamic bladder system:</strong>
+        <ul>
+            <li>Hollow bladder cavity with two channels</li>
+            <li>Balloon connected to a peristaltic pump</li>
+            <li>Water-equivalent gel mimics surrounding tissue</li>
+        </ul>
+        </div>
+        </div>
+        
+        <div class="section">
+        <h2>Measurements</h2>
+        <p>The Bladder phantom was scanned using a:</p>
+        <ul>
+            <li>CT (120 kV)</li>
+            <li>CBCT (125 kV)</li>
+        </ul>
+        
+        <p>and Bladder filling volumes:</p>
+        <ul>
+            <li>10 ml</li>
+            <li>40 ml</li>
+            <li>70 ml</li>
+        </ul>
+        
+        <p>
+        A saline-water mixture was used to improve image contrast. Volumes were segmented using 3D Slicer 
+        and compared to actual filling volumes.
+        </p>
+        </div>
+        
+        <div class="section">
+        <h2>Results</h2>
+        
+        <p><strong>Hounsfield Units (realism):</strong></p>
+        <table>
+            <tr>
+                <th>Tissue</th>
+                <th>CT (HU)</th>
+                <th>CBCT (HU)</th>
+            </tr>
+            <tr>
+                <td>Skeletal muscle</td>
+                <td>157</td>
+                <td>161</td>
+            </tr>
+            <tr>
+                <td>Adipose tissue</td>
+                <td>24.5</td>
+                <td>19.0</td>
+            </tr>
+            <tr>
+                <td>Cortical bone</td>
+                <td>596</td>
+                <td>761</td>
+            </tr>
+        </table>
+        
+        <p><strong>Bladder volume accuracy:</strong></p>
+        <ul>
+            <li>10 ml: deviation ~10–13%</li>
+            <li>40 ml: deviation ~4–5%</li>
+            <li>70 ml: deviation ~1–2%</li>
+        </ul>
+        
+        <p>Absolute differences remained small (0.9–1.9 ml).</p>
+        
+        </div>
+        
+        <div class="section">
+        <h2>Conclusion</h2>
+        <p>
+        This study demonstrates a <strong>realistic phantom with a controllable dynamic bladder</strong>, enabling more 
+        accurate simulation of anatomical changes during treatment.
+        </p>
+        
+        <ul>
+            <li>Improved verification of oART workflows</li>
+            <li>More realistic testing conditions</li>
+            <li>Potential for complex clinical scenario simulation</li>
+        </ul>
+        </div>
+        
+        <div class="section">
+        <h2>Looking ahead</h2>
+        <p>
+        Further development of dynamic phantoms could improve clinical realism and enhance adaptive radiotherapy quality.
+        </p>
+        </div>
+
         </div>
 
         <div class="section">
