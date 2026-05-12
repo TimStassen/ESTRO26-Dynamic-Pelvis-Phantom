@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTRO26: Dynamic Pelvic Phantom Development</title>
+    <style>
+        :root {
+            --primary-color: #4a7073;
+            --secondary-bg: #d4e1e2;
+            --text-dark: #333;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+        }
+
+        header {
+            background: var(--secondary-bg);
+            color: var(--primary-color);
+            padding: 3rem 1rem;
+            text-align: center;
+            border-bottom: 3px solid #b8c9ca;
+        }
+
+        header h1 { margin: 0; font-size: 2.2rem; }
+        header h2 { margin: 10px 0 0; font-weight: 400; font-size: 1.1rem; opacity: 0.9; }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: var(--white);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+            margin-top: 0;
+        }
+
+        /* Image Handling */
+        .img-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery img {
+            flex: 1 1 200px;
+            object-fit: cover;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        th { background-color: #f4f4f4; border-radius: 4px; }
+
+        .highlight-box {
+            background-color: #eef7f8;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .container { width: 95%; padding: 10px; }
+            header h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ESTRO26: Dynamic Tissue-Equivalent Pelvis Phantom</h1>
+        <h2>Tim Stassen, Luana de Freitas Nascimento, Frank Verhaegen, and Gabriel Paiva Fonseca</h2>
+    </header>
+
+    <main class="container">
+        
+        <section class="section">
+            <h2>Objective</h2>
+            <p>
+                Online Adaptive Radiotherapy (oART) requires real-time adjustments to account for anatomical variations. However, verifying dose delivery during rapid physiological changes—such as bladder filling—remains a significant challenge.
+            </p>
+            <ul>
+                <li><strong>Gap:</strong> Traditional phantoms lack realistic internal anatomy.</li>
+                <li><strong>Limitation:</strong> Current tools have a limited ability to simulate continuous organ motion.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Proposed Solution</h2>
+            <p>We developed a <strong>realistic 3D-printed pelvic phantom</strong> characterized by:</p>
+            <div class="highlight-box">
+                <ul>
+                    <li>High-fidelity anatomical structures (muscle, fat, bone).</li>
+                    <li>A <strong>dynamic bladder system</strong> featuring controlled volumetric filling and emptying.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Phantom Development Workflow</h2>
+            <div class="img-container">
+                <img src="images/stripped workflow_v3 (8).png" alt="Development workflow for tissue-equivalent phantoms">
+            </div>
+            <p>
+                The development follows a four-step optimization process. First, candidate materials are selected and printed as samples. These are scanned using <strong>Dual Energy CT (DECT)</strong> to determine Material Properties: Relative Electron Density (RED) and Effective Atomic Number ($Z_{eff}$).
+            </p>
+            <p>
+                By varying 3D printing parameters (infill/pattern), we match the RED values to reference standards (ICRU44). Once optimized, these settings are applied to complex anatomical geometries to produce the final verified phantom.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Dynamic Bladder System</h2>
+            <p>
+                The phantom ($187 \times 287 \times 70\text{ mm}^3$) incorporates nine distinct anatomical structures. Using our in-house <strong>AMIGOpy</strong> software, we optimized parameters to match realistic CT Hounsfield Units.
+            </p>
+            <div class="highlight-box">
+                <strong>System Components:</strong>
+                <ul>
+                    <li>Hollow bladder cavity with integrated dual-access channels.</li>
+                    <li>Internal balloon coupled to a precision peristaltic pump.</li>
+                    <li>Surrounding water-equivalent gel to mimic soft-tissue displacement.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Results & Validation</h2>
+            <p>Verification was performed using CT (120 kV) and CBCT (125 kV) at filling volumes of 10 ml, 40 ml, and 70 ml.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tissue Type</th>
+                        <th>CT (HU)</th>
+                        <th>CBCT (HU)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Skeletal Muscle</td>
+                        <td>157</td>
+                        <td>161</td>
+                    </tr>
+                    <tr>
+                        <td>Adipose Tissue</td>
+                        <td>24.5</td>
+                        <td>19.0</td>
+                    </tr>
+                    <tr>
+                        <td>Cortical Bone</td>
+                        <td>596</td>
+                        <td>761</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Bladder Volume Accuracy:</strong></p>
+            <ul>
+                <li><strong>10 ml:</strong> 10–13% deviation</li>
+                <li><strong>40 ml:</strong> 4–5% deviation</li>
+                <li><strong>70 ml:</strong> 1–2% deviation</li>
+            </ul>
+            <p>Absolute volume differences were negligible, ranging from only 0.9 to 1.9 ml.</p>
+        </section>
+
+        <section class="section">
+            <h2>Experimental Setup</h2>
+            <div class="gallery">
+                <img src="images/IMG_4841.JPEG" alt="Setup for CT">
+                <img src="images/IMG_4883.JPEG" alt="CBCT setup">
+                <img src="images/IMG_4850.JPEG" alt="Bladder phantom">
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Conclusion</h2>
+            <p>
+                This study successfully demonstrates a <strong>controllable, dynamic phantom</strong>. By enabling accurate simulation of physiological changes, this tool improves the validation of online adaptive workflows and allows for more complex clinical scenario testing.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tim Stassen | Developed for ESTRO26 | Hosted on GitHub Pages</p>
+    </footer>
+
+</body>
+</html>
